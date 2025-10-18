@@ -1,0 +1,287 @@
+/* Reset e estilo geral */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e5f2db; /* tom suave de verde */
+    color: #2b2b2b; /* texto preto */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* HEADER */
+header {
+    background-color: #3b7a3b; /* verde Shrek */
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* NAV */
+nav {
+    background-color: #5c9c5c; /* verde mais claro */
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    margin: 0 15px;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+nav a:hover {
+    color: #000;
+}
+
+nav a.active {
+    color: #035214;
+}
+
+/* CONTEÚDO PRINCIPAL E SIDEBAR */
+body > .main-content,
+body > .sidebar {
+    padding: 20px;
+}
+
+.wrapper {
+    display: flex;
+    flex: 1;
+    margin: 15px;
+}
+
+/* Main Content ocupa 3/4 */
+.main-content {
+    flex: 3;
+    background-color: #f2f7f2; /* fundo claro */
+    border-radius: 8px;
+    margin-right: 20px;
+    padding: 20px;
+}
+
+/* Sidebar ocupa 1/4 */
+.sidebar {
+    flex: 1;
+    background-color: #d4ead4; /* verde mais claro */
+    border-left: 2px solid #3b7a3b;
+    border-radius: 8px;
+    padding: 20px;
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+}
+
+.sidebar h3 {
+    color: #3b7a3b;
+    margin-bottom: 15px;
+}
+
+/* Lista de personagens */
+.character-list {
+    list-style: none;
+    padding: 0;
+}
+
+.character-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.character-list img {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.character-list a {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.character-item {
+    margin-bottom: 10px;
+}
+
+.character-item a {
+    display: flex;
+    align-items: center;      
+    text-decoration: none;
+    color: #2b2b2b;
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.character-item a:hover {
+    background-color: #9fce9f;
+}
+
+.character-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;    
+    border-radius: 4px;
+    margin-right: 10px;       
+}
+
+.character-item span {
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+/* Cards dos filmes */
+.movies {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.movie-card {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    width: 250px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.movie-card h2 {
+    font-size: 18px;
+    color: #3b7a3b;
+    margin-bottom: 10px;
+}
+
+.movie-card p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.movie-card a {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff; 
+    background-color: #2f7a2f; 
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 6px; 
+}
+
+.movie-card a:hover {
+    background-color: #1f4f1f; 
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* BODY HEADER */
+.body-header h2 {
+    color: #3b7a3b;
+    margin-bottom: 10px;
+}
+
+.body-header p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* IMAGEM PRINCIPAL */
+.main-content img {
+    margin-top: 20px;
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+/* FOOTER */
+footer {
+    background-color: #235023;
+    color: #f1f1f1;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+footer.footer a {
+     color: #1e90ff;
+    text-decoration: none;
+}
+
+footer.footer a:hover {
+    text-decoration: underline;
+}
+
+/* RESPONSIVO */
+@media(max-width: 900px) {
+    .wrapper {
+        flex-direction: column;
+    }
+    .main-content {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}
+
+/* Conteúdo textual principal */
+.content-text {
+    background-color: #f2f7f2; /* fundo claro */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.content-text h2 {
+    color: #3b7a3b; /* verde escuro Shrek */
+    margin-bottom: 10px;
+}
+
+.content-text h3 {
+    color: #5c9c5c; /* verde médio */
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.content-text p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.content-text ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+.content-text ul li {
+    margin-bottom: 6px;
+}
+
+/* Seção de curiosidades */
+.content-curiosity {
+    background-color: #d4ead4; /* verde bem claro */
+    padding: 15px;
+    border-left: 5px solid #3b7a3b; /* destaque lateral */
+    border-radius: 6px;
+    margin-top: 20px;
+}
+
+.content-curiosity h3 {
+    color: #3b7a3b;
+    margin-bottom: 8px;
+}
+
+.content-curiosity p {
+    font-size: 0.95rem;
+    font-style: italic;
+    line-height: 1.4;
+    margin-bottom: 0;
+}
