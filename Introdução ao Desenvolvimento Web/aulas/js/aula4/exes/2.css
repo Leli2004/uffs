@@ -9,8 +9,8 @@
     position: relative;
     background-color: rgb(162, 162, 253);
     font-weight: bold;
-    width: 1200px;
-    height: 500px;
+    width: 90vw;
+    height: 85vh;
     margin: 1px;
     border: 5px solid black;
     overflow: hidden;

@@ -3,40 +3,23 @@
 manipulação de estilos (style.top, style.left)
 */
 
-// const gato = document.getElementById("gato");
-// let angulo = Math.PI / 2;
-// function animarGato(tempo, ultimoTempo) {
-//     if (ultimoTempo != null) {
-//         angulo += (tempo - ultimoTempo) * 0.001; // velocidade
-//     }
-//     // Pega o tamanho da caixa e do gato
-//     const box = document.querySelector(".box");
-//     const centroX = box.clientWidth / 2;
-//     const centroY = box.clientHeight / 2;
-//     const raioX = 300; // horizontal
-//     const raioY = 150; // vertical
-//     // Atualiza posição com base em seno e cosseno
-//     gato.style.left = centroX + Math.cos(angulo) * raioX - gato.width / 2 + "px";
-//     gato.style.top = centroY + Math.sin(angulo) * raioY - gato.height / 2 + "px";
-//     requestAnimationFrame((novoTempo) => animarGato(novoTempo, tempo));
-// };
-// requestAnimationFrame(animarGato);
-
+// Mover gato e chapéu automaticamente dentro de box 
 const gato = document.getElementById("gato");
 const chapeu = document.getElementById("chapeu");
+const box = document.querySelector(".box");
+
 let angulo = Math.PI / 2;
 
-function animarGato(tempo, ultimoTempo) {
-    if (ultimoTempo != null) {
-        angulo += (tempo - ultimoTempo) * 0.0006; // velocidade
+function animarGato(time, lastTime) {
+    if (lastTime != null) {
+        angulo += (time - lastTime) * 0.0007; // velocidade
     }
 
     // Pega o tamanho da caixa e do gato
-    const box = document.querySelector(".box");
     const centroX = box.clientWidth / 2;
     const centroY = box.clientHeight / 2;
-    const raioX = 300; // horizontal
-    const raioY = 150; // vertical
+    const raioX = box.clientWidth * 0.40; // 40% da largura
+    const raioY = box.clientHeight * 0.30; // 30% da altura
 
     // Posição do gato
     const gatoX = centroX + Math.cos(angulo) * raioX - gato.width / 2;
@@ -47,14 +30,14 @@ function animarGato(tempo, ultimoTempo) {
     gato.style.top = gatoY + "px";
 
     // Posiciona o chapéu logo acima do gato
-    const offsetChapeu = -43; // menor distância vertical (desce o chapéu)
-    const ajusteHorizontal = gato.width * 0.10; // move o chapéu mais à direita
+    const offsetChapeu = -43; // distância vertical
+    const ajusteHorizontal = gato.width * 0.10; // distância horizontal
 
     chapeu.style.left = gatoX + ajusteHorizontal + "px";
     chapeu.style.top = gatoY - offsetChapeu + "px";
 
     // Anima
-    requestAnimationFrame((novoTempo) => animarGato(novoTempo, tempo));
+    requestAnimationFrame((newTime) => animarGato(newTime, time));
 };
 
 requestAnimationFrame(animarGato);
