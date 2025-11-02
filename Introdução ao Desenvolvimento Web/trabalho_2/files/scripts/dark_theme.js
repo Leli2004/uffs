@@ -1,3 +1,5 @@
+// Script para alterar cores da página
+
 let botaoTema = document.getElementById("toggle-theme");
 
 // Adiciona ouvinte para o evento de clique

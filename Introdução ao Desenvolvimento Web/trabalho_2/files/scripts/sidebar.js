@@ -1,3 +1,4 @@
+// Script para esconder ou exibir sidebar
 
 document.addEventListener("DOMContentLoaded", function () {
   const btn = document.getElementById("toggle-sidebar");

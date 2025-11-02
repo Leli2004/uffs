@@ -1,3 +1,5 @@
+// Script para alterar tamanho das fontes (aumenta, diminui ou restaura padrão)
+
 document.addEventListener('DOMContentLoaded', () => {
     const minFontSize = 10;  // px
     const maxFontSize = 30;  // px
@@ -13,9 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setFontSize(currentFontSize);
 
+    // Conforme cada tecla pressionada, altera o tamanho das fontes da página 
     document.addEventListener('keydown', (e) => {
       if (e.ctrlKey && !e.repeat) {
         switch (e.key) {
+          // Diminuir fonte
           case 'ArrowDown':
             e.preventDefault();
             if (currentFontSize > minFontSize) {
@@ -23,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
               setFontSize(currentFontSize);
             }
             break;
+          // Aumentar fonte
           case 'ArrowUp':
             e.preventDefault();
             if (currentFontSize < maxFontSize) {
@@ -30,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
               setFontSize(currentFontSize);
             }
             break;
+          // Restaurar padrão definido no css
           case '0':
             e.preventDefault();
             currentFontSize = defaultFontSize;
@@ -39,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
+    // Exibe alert com fontes disponíveis na página
     const alertEl = document.getElementById('font-alert');
     alertEl.addEventListener('click', () => {
       alert(`Atalhos do teclado:\n\nCtrl + Seta para cima: Aumentar fonte\nCtrl + Seta para baixo: Diminuir fonte\nCtrl + 0: Restaurar fonte padrão`);
