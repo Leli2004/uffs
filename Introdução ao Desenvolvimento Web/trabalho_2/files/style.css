@@ -27,29 +27,42 @@ header {
     position: relative;
 }
 
-/*  Botão do header */
-#toggle-sidebar {
+/*  Botões do header */
+#header-buttons {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.header-button {
     background-color: #5c9c5c;
     color: #fff;
     border: none;
     padding: 10px 16px;
     border-radius: 6px;
+    width: 190px;
+    text-align: center;
     font-size: 0.95rem;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.2s, transform 0.2s;
-    position: absolute;
-    top: 15px;
-    right: 20px;
 }
 
-#toggle-sidebar:hover {
+.header-button:hover {
     background-color: #4a8a4a;
     transform: translateY(-2px);
 }
 
-#toggle-sidebar:active {
+.header-button:active {
     transform: scale(0.98);
+}
+
+#header-text h1 {
+    margin: 0;
+    text-align: center;
 }
 
 /* NAV */

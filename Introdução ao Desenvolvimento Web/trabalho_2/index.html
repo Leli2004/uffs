@@ -6,16 +6,18 @@
     <title>Início - Universo Shrek</title>
 
     <link rel="stylesheet" href="files/style.css">
+    <link rel="stylesheet" href="files/style-dark.css">
     <link rel="icon" href="images/logo.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
     <header>
-        <div>
-            <button id="toggle-sidebar">Ocultar menu de personagens</button>
+        <div id="header-buttons">
+            <button id="toggle-theme" class="header-button">🌙 Modo Escuro</button>
+            <button id="toggle-sidebar" class="header-button">Ocultar personagens</button>
         </div>
-        <div>
+        <div id="header-text">
             <h1>Universo Shrek</h1>
         </div>
     </header>
@@ -115,7 +117,8 @@
                     </a>
                 </li>
                 <li class="character-item">
-                <a href="https://shrek.fandom.com/wiki/Category:Protagonists" target="_blank">
+                <a href="https://shrek.fandom.com/wiki/Category:Characters" target="_blank">
+                        <img src="https://static.wikia.nocookie.net/shrek/images/e/ec/Ogre_Triplets_%28Shrek_Forever_After%29.png/revision/latest?cb=20230505053753" alt="Outros">
                         <span>Veja mais...</span>
                     </a>
                 </li>
@@ -137,7 +140,8 @@
         </div>
     </footer>
 
-    <script src="files/scripts/toggle_sidebar.js"></script>
+    <script src="files/scripts/sidebar.js"></script>
+    <script src="files/scripts/dark_theme.js"></script>
 
 </body>
 </html>

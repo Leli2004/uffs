@@ -6,10 +6,10 @@ document.addEventListener("DOMContentLoaded", function () {
   btn.addEventListener("click", function () {
     if (sidebar.style.display === "none") {
       sidebar.style.display = "block";
-      btn.textContent = "Ocultar menu de personagens";
+      btn.textContent = "Ocultar personagens";
     } else {
       sidebar.style.display = "none";
-      btn.textContent = "Mostrar menu de personagens";
+      btn.textContent = "Mostrar personagens";
     }
   });
 });
