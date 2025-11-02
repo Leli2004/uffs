@@ -50,7 +50,9 @@
                     <li>Lorde Farquaad - vilão que deseja ser rei</li>
                 </ul>
             </div>
+
             <img src="../images/shrek1.jpg" alt="Pôster do filme Shrek 1" width="500">
+            
             <div class="content-curiosity">
                 <h3>Curiosidade</h3>
                 <p>
@@ -58,6 +60,33 @@
                     sendo o primeiro vencedor da categoria na história da premiação.
                 </p>
             </div>
+
+            <div id="review-section">
+                <button id="add-review-btn" class="header-button" style="margin-top:20px;">Adicionar avaliação</button>
+
+                <form id="review-form" style="display:none; margin-top:15px; max-width: 400px; background:#f2f7f2; padding:15px; border-radius:8px;">
+                    <label for="email">Email:</label><br>
+                    <input id="email" name="email" required style="width:100%; padding:6px; margin-bottom:12px; border-radius:4px; border:1px solid #ccc;"><br>
+
+                    <label for="nota">Nota:</label><br>
+                    <select id="nota" name="nota" required style="width:100%; padding:6px; margin-bottom:12px; border-radius:4px; border:1px solid #ccc;">
+                    <option value="" disabled selected>Selecione uma nota</option>
+                    <script>
+                        for(let i=0; i<=5; i++){
+                        document.write(`<option value="${i}">${i}</option>`);
+                        }
+                    </script>
+                    </select><br>
+
+                    <label for="comentario">Comentário:</label><br>
+                    <textarea id="comentario" name="comentario" rows="4" required style="width:100%; padding:6px; border-radius:4px; border:1px solid #ccc;"></textarea><br>
+
+                    <button type="submit" class="header-button" style="width:100%;">Enviar</button>
+                </form>
+
+                <div id="review-message" style="margin-top:15px; font-weight:bold; color:#3b7a3b;"></div>
+            </div>
+
         </div>
     </div>
 
@@ -76,6 +105,7 @@
 
     <script src="./scripts/dark_theme.js"></script>
     <script src="./scripts/shortcuts.js"></script>
+    <script src="./scripts/rating.js"></script>
 
 </body>
 </html>
