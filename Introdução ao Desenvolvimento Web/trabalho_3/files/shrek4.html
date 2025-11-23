@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shrek Para Sempre</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-dark.css">
+    
+    <link rel="icon" href="../images/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div id="header-buttons">
+            <button id="toggle-theme" class="header-button">🌙 Modo Escuro</button>
+        </div>
+        <div id="header-text">
+            <h1>Universo Shrek</h1>
+        </div>
+    </header>
+
+    <nav>
+        <a href="../index.html">Início</a>
+        <a href="shrek1.html">Shrek 1</a>
+        <a href="shrek2.html">Shrek 2</a>
+        <a href="shrek3.html">Shrek 3</a>
+        <a href="shrek4.html" class="active">Shrek 4</a>
+    </nav>
+
+    <div id="font-alert" title="ver atalhos do teclado" tabindex="0" role="button" aria-label="Ver atalhos do teclado">🔠</div>
+
+    <div class="wrapper">
+        <div class="main-content">
+            <div class="content-text">
+                <h2>Shrek Para Sempre (2010)</h2>
+                <p>
+                    Cansado da rotina familiar, Shrek sente falta dos tempos em que era um ogro temido. 
+                    Ao assinar um contrato mágico com Rumpelstiltskin, ele acaba preso em uma realidade alternativa, 
+                    onde nunca havia conhecido Fiona e os ogros são caçados.
+                </p>
+
+                <h3>Principais personagens</h3>
+                <ul>
+                    <li>Shrek – em busca de recuperar sua verdadeira vida</li>
+                    <li>Fiona – guerreira ogra e líder da resistência</li>
+                    <li>Burro – sempre divertido, mas desconfiado da nova realidade</li>
+                    <li>Rumpelstiltskin – o vilão manipulador do filme</li>
+                </ul>
+            </div>
+
+            <img src="../images/shrek4.jpg" alt="Pôster do filme Shrek Para Sempre" width="500">
+
+            <div class="content-curiosity">
+                <h3>Curiosidade</h3>
+                <p>
+                    <em>Shrek Para Sempre</em> foi anunciado como o último filme da saga principal e marcou o 
+                    encerramento da jornada de Shrek nos cinemas até o anúncio de <strong>Shrek 5</strong>.
+                </p>
+            </div>
+
+            <div class="review-section">
+                <button id="add-review-btn" class="header-button">Adicionar avaliação</button>
+
+                <form id="review-form">
+                    <label for="email">Email:</label><br>
+                    <input id="email" class="review-form-email" name="email"><br>
+
+                    <label for="nota">Nota:</label><br>
+                    <select id="nota" class="review-form-nota" name="nota">
+                    <option value="" disabled selected>Selecione uma nota</option>
+                    <script>
+                        for(let i=0; i<=5; i++){
+                        document.write(`<option value="${i}">${i}</option>`);
+                        }
+                    </script>
+                    </select><br>
+
+                    <label for="comentario">Comentário:</label><br>
+                    <textarea id="comentario" class="review-form-comentario" name="comentario" rows="4"></textarea><br>
+
+                    <button type="submit" class="header-button" style="width:100%;">Enviar</button>
+                </form>
+
+                <div id="review-form-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p><i class="fa-solid fa-code"></i> Introdução ao Desenvolvimento Web<br>2025.2</p>
+        <div class="footer-info">
+            <p><i class="fa-solid fa-user"></i> <strong>Danieli do N Dalla Vecchia</strong></p>
+            <p><i class="fa-solid fa-id-card"></i> Matrícula: 20250020232</p>
+            <p>
+                <i class="fa-solid fa-envelope"></i> 
+                <a href="mailto:danieli.dallavecchia@estudante.uffs.edu.br">danieli.dallavecchia@estudante.uffs.edu.br</a> /  
+                <a href="mailto:danielidondallavecchia@gmail.com">danielidondallavecchia@gmail.com</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="./scripts/dark_theme.js"></script>
+    <script src="./scripts/shortcuts.js"></script>
+    <script src="./scripts/rating.js"></script>
+
+</body>
+</html>
