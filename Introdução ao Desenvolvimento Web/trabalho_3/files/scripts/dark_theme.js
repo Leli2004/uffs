@@ -1,4 +1,5 @@
 // Script para alterar cores da página
+// quando dark theme é ativado
 
 let botaoTema = document.getElementById("toggle-theme");
 

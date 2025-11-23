@@ -1,4 +1,5 @@
 // Script para alterar tamanho das fontes (aumenta, diminui ou restaura padrão)
+// quando atalhos são pressionados (ctrl+up, ctrl+down ou ctrl+0)
 
 document.addEventListener('DOMContentLoaded', () => {
     const minFontSize = 10;  // px

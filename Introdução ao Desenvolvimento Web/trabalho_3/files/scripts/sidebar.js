@@ -1,3 +1,6 @@
+// Script para sidebar
+// a. para ocultar ou exibir o sidebar na tela
+// b. para transformar sidebar num menu lateral
 
 document.addEventListener("DOMContentLoaded", function () {
   const btn = document.getElementById("toggle-sidebar");

@@ -37,9 +37,10 @@ O trabalho 3 consiste em adicionar técnicas de responsividade vistas em aula.
 
 ### Responsividade
 
-#### Responsividade por orientação (portrait vs landscape
+#### Responsividade por orientação (portrait vs landscape)
 
-O projeto adapta a interface usando media queries baseadas na orientação da tela:
+O projeto adapta a interface usando media queries baseadas na orientação da tela:  
+
 ➤ Tela vertical (portrait):
 - Sidebar começa oculto
 - Botão “Mostrar Personagens” aparece

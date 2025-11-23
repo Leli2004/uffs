@@ -1,4 +1,5 @@
 // Script para simular envio de formulário
+// quando uma avaliação é adicionada
 
 // Ao clicar em 'adicionar avaliação', exibe o formulário
 document.addEventListener('DOMContentLoaded', () => {
