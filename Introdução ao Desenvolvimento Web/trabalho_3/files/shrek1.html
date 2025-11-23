@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shrek</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-dark.css">
+
+    <link rel="icon" href="../images/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div id="header-buttons">
+            <button id="toggle-theme" class="header-button">🌙 Modo Escuro</button>
+        </div>
+        <div id="header-text">
+            <h1>Universo Shrek</h1>
+        </div>
+    </header>
+
+    <nav>
+        <a href="../index.html">Início</a>
+        <a href="shrek1.html" class="active">Shrek 1</a>
+        <a href="shrek2.html">Shrek 2</a>
+        <a href="shrek3.html">Shrek 3</a>
+        <a href="shrek4.html">Shrek 4</a>
+    </nav>
+
+    <div id="font-alert" title="ver atalhos do teclado" tabindex="0" role="button" aria-label="Ver atalhos do teclado">🔠</div>
+
+    <div class="wrapper">
+        <div class="main-content">
+            <div class="content-text">
+                <h2>Shrek (2001)</h2>
+                <p>
+                    O primeiro filme da franquia apresenta Shrek, um ogro que vive isolado em seu pântano. 
+                    Sua vida muda completamente quando Lorde Farquaad decide banir criaturas mágicas para sua casa. 
+                    Para recuperar sua paz, Shrek faz um acordo: resgatar a princesa Fiona de uma torre guardada por um dragão.
+                </p>
+
+                <h3>Principais personagens</h3>
+                <ul>
+                    <li>Shrek - ogro que só queria sossego</li>
+                    <li>Fiona - princesa com um grande segredo</li>
+                    <li>Burro - fiel escudeiro, falante e divertido</li>
+                    <li>Lorde Farquaad - vilão que deseja ser rei</li>
+                </ul>
+            </div>
+
+            <img src="../images/shrek1.jpg" alt="Pôster do filme Shrek 1" width="500">
+            
+            <div class="content-curiosity">
+                <h3>Curiosidade</h3>
+                <p>
+                    <em>Shrek</em> ganhou o Oscar de Melhor Filme de Animação em 2002, 
+                    sendo o primeiro vencedor da categoria na história da premiação.
+                </p>
+            </div>
+
+            <div class="review-section">
+                <button id="add-review-btn" class="header-button">Adicionar avaliação</button>
+
+                <form id="review-form">
+                    <label for="email">Email:</label><br>
+                    <input id="email" class="review-form-email" name="email"><br>
+
+                    <label for="nota">Nota:</label><br>
+                    <select id="nota" class="review-form-nota" name="nota">
+                    <option value="" disabled selected>Selecione uma nota</option>
+                    <script>
+                        for(let i=0; i<=5; i++){
+                        document.write(`<option value="${i}">${i}</option>`);
+                        }
+                    </script>
+                    </select><br>
+
+                    <label for="comentario">Comentário:</label><br>
+                    <textarea id="comentario" class="review-form-comentario" name="comentario" rows="4"></textarea><br>
+
+                    <button type="submit" class="header-button" style="width:100%;">Enviar</button>
+                </form>
+
+                <div id="review-form-message"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p><i class="fa-solid fa-code"></i> Introdução ao Desenvolvimento Web<br>2025.2</p>
+        <div class="footer-info">
+            <p><i class="fa-solid fa-user"></i> <strong>Danieli do N Dalla Vecchia</strong></p>
+            <p><i class="fa-solid fa-id-card"></i> Matrícula: 20250020232</p>
+            <p>
+                <i class="fa-solid fa-envelope"></i> 
+                <a href="mailto:danieli.dallavecchia@estudante.uffs.edu.br">danieli.dallavecchia@estudante.uffs.edu.br</a> /  
+                <a href="mailto:danielidondallavecchia@gmail.com">danielidondallavecchia@gmail.com</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="./scripts/dark_theme.js"></script>
+    <script src="./scripts/shortcuts.js"></script>
+    <script src="./scripts/rating.js"></script>
+
+</body>
+</html>

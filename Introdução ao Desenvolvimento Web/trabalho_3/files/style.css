@@ -1,0 +1,620 @@
+/* Reset e estilo geral */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e5f2db;
+    color: #2b2b2b;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* HEADER */
+header {
+    background-color: #3b7a3b;
+    padding: 20px;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/*  Botões do header */
+#header-buttons {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.header-button {
+    background-color: #5c9c5c;
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    width: 190px;
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.header-button:hover {
+    background-color: #4a8a4a;
+    transform: translateY(-2px);
+}
+
+.header-button:active {
+    transform: scale(0.98);
+}
+
+#header-text h1 {
+    margin: 0;
+    text-align: center;
+}
+
+/* NAV */
+nav {
+    background-color: #5c9c5c;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    margin: 0 15px;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+nav a:hover {
+    color: #000;
+}
+
+nav a.active {
+    color: #035214;
+}
+
+/* CONTEÚDO PRINCIPAL E SIDEBAR */
+body > .main-content,
+body > .sidebar {
+    padding: 20px;
+}
+
+.wrapper {
+    display: flex;
+    flex: 1;
+    margin: 15px;
+}
+
+/* Main Content ocupa 3/4 */
+.main-content {
+    flex: 3;
+    background-color: #f2f7f2;
+    border-radius: 8px;
+    margin-right: 20px;
+    padding: 20px;
+}
+
+/* Sidebar ocupa 1/4 */
+.sidebar {
+    flex: 1;
+    background-color: #d4ead4;
+    border-left: 2px solid #3b7a3b;
+    border-radius: 8px;
+    padding: 20px;
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+}
+
+.sidebar h3 {
+    color: #3b7a3b;
+    margin-bottom: 15px;
+}
+
+/* Lista de personagens */
+.character-list {
+    list-style: none;
+    padding: 0;
+}
+
+.character-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.character-list img {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.character-list a {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.character-item {
+    margin-bottom: 10px;
+}
+
+.character-item a {
+    display: flex;
+    align-items: center;      
+    width: 100%;
+    text-decoration: none;
+    color: #2b2b2b;
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+    box-sizing: border-box;
+}
+
+.character-item a:hover {
+    background-color: #9fce9f;
+}
+
+.character-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;    
+    border-radius: 4px;
+    margin-right: 10px;       
+}
+
+.character-item span {
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+/* Cards dos filmes */
+.movies {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.movie-card {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    width: 250px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.movie-card h2 {
+    font-size: 18px;
+    color: #3b7a3b;
+    margin-bottom: 10px;
+}
+
+.movie-card p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.movie-card a {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff; 
+    background-color: #2f7a2f; 
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 6px; 
+}
+
+.movie-card a:hover {
+    background-color: #1f4f1f; 
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* BODY HEADER */
+.body-header h2 {
+    color: #3b7a3b;
+    margin-bottom: 10px;
+}
+
+.body-header p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* IMAGEM PRINCIPAL */
+.main-content img {
+    margin-top: 20px;
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+/* FOOTER */
+footer {
+    background-color: #235023;
+    color: #f1f1f1;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+footer.footer a {
+     color: #1e90ff;
+    text-decoration: none;
+}
+
+footer.footer a:hover {
+    text-decoration: underline;
+}
+
+/* Conteúdo textual principal */
+.content-text {
+    background-color: #f2f7f2; 
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.content-text h2 {
+    color: #3b7a3b; 
+    margin-bottom: 10px;
+}
+
+.content-text h3 {
+    color: #5c9c5c; 
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.content-text p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.content-text ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+.content-text ul li {
+    margin-bottom: 6px;
+}
+
+/* Seção de curiosidades */
+.content-curiosity {
+    background-color: #d4ead4;
+    padding: 15px;
+    border-left: 5px solid #3b7a3b;
+    border-radius: 6px;
+    margin-top: 20px;
+}
+
+.content-curiosity h3 {
+    color: #3b7a3b;
+    margin-bottom: 8px;
+}
+
+.content-curiosity p {
+    font-size: 0.95rem;
+    font-style: italic;
+    line-height: 1.4;
+    margin-bottom: 0;
+}
+
+#font-alert {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 9999; /* sobrepõe tudo */
+    background-color: #3b7a3b;
+    color: white;
+    font-size: 24px;
+    padding: 12px 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#font-alert:hover {
+    background-color: #2c5a2c;
+}
+
+/* Seção de avaliações */
+.review-section {
+    display: flex;
+}
+
+#add-review-btn {
+    margin-top:20px;
+}
+
+#review-form {
+    display:none; 
+    margin-top:15px; 
+    max-width: 400px; 
+    background:#f2f7f2; 
+    padding:15px; 
+    border-radius:8px;
+}
+
+.review-form-email {
+    width:100%; 
+    padding:6px; 
+    margin-bottom:12px; 
+    border-radius:4px; 
+    border:1px solid #ccc;
+}
+
+.review-form-nota {
+    width:100%; 
+    padding:6px; 
+    margin-bottom:12px; 
+    border-radius:4px; 
+    border:1px solid #ccc;
+}
+
+.review-form-comentario {
+    width:100%; 
+    padding:6px; 
+    border-radius:4px; 
+    border:1px solid #ccc;
+}
+
+#review-form-message {
+    margin-top:15px; 
+    font-weight:bold; 
+    color:#3b7a3b;
+}
+
+/* RESPONSIVIVIDADE */
+
+/* Media query para posicionar containers */
+@media (max-width: 900px) {
+    .wrapper {
+        flex-direction: column;
+    }
+
+    .main-content, .sidebar {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+/* Media query para telas até 1024px (tablet horizontal/vertical)
+  Ajusta margens, fontes e tamanho dos cards para melhor leitura */
+@media (max-width: 1024px) {
+    nav a {
+        margin: 0 8px;
+        font-size: 0.9rem;
+    }
+
+    .movie-card {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    header {
+        font-size: 1.6rem;
+    }
+
+    .wrapper {
+        flex-direction: column;
+    }
+
+    .main-content {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}
+
+/* Media query para telas até 600px (celulares)
+  Ajusta o layout, redimensionar imagens, reduzir fontes, aumentar o espaçamento para toque*/
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        padding: 15px;
+        text-align: center;
+    }
+    #header-buttons {
+        position: static;
+        margin-bottom: 10px;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+    nav a {
+        font-size: 0.85rem;
+        padding: 6px 8px;
+    }
+
+    .wrapper {
+        flex-direction: column;
+        margin: 5px;
+    }
+
+    .main-content img {
+        width: 100%;
+        height: auto;
+    }
+
+    .sidebar {
+        position: static;
+        width: 100%;
+        border-left: none;
+        border-top: 2px solid #3b7a3b;
+        margin-top: 20px;
+    }
+
+    .character-item img {
+        width: 40px;
+        height: 40px;
+    }
+
+    /* Ajustar textos para telas menores */
+    body {
+        font-size: 14px;
+    }
+    h1, h2, h3 {
+        line-height: 1.2;
+        word-break: break-word;
+    }
+
+    /* Ajustar tamanho do ícone de alertas */
+    #font-alert {
+        padding: 10px;
+        font-size: 20px;
+    }
+
+    /* Footer */
+    footer.footer {
+        text-align: center;
+        padding: 15px;
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+
+    .footer-info {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-top: 10px;
+    }
+
+    footer.footer a {
+        font-size: 0.9rem;
+        word-break: break-word;
+    }
+
+    /* Header - botões */
+    #header-buttons {
+        position: static;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+    }
+
+    .header-button {
+        width: auto;
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+        padding: 15px;
+    }
+
+    #header-text h1 {
+        font-size: 1.6rem;
+    }
+
+}
+
+/* Vertical - mostrar botão 'Mostrar Personagens' e ocultar 'Ocultar Personagens' */
+@media (orientation: portrait) {
+    /* Sidebar oculto inicialmente */
+    .sidebar {
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        width: 75%;
+        max-width: 280px;
+        background-color: #d4ead4;
+        border-right: 3px solid #3b7a3b;
+        padding: 20px;
+        overflow-y: auto;
+        z-index: 9999;
+    }
+
+    /* Botão para mostrar personagens no sidebar suspenso */
+    .mobile-sidebar-button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #3b7a3b;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+        cursor: pointer;
+    }
+    
+
+    /* Botão fechar dentro do menu */
+    .mobile-sidebar-close {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #3b7a3b;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+        cursor: pointer;
+    }
+
+    /* Botão desktop some */
+    #toggle-sidebar {
+        display: none;
+    }
+}
+
+/* Horizontal - mostrar botão 'Ocultar Personagens' e ocultar 'Mostrar Personagens' */
+@media (orientation: landscape) {
+    /* Sidebar sempre aparece */
+    .sidebar {
+        display: block;
+        position: static;
+        height: auto;
+        width: auto;
+    }
+
+    /* Nenhum botão de sidebar aparece */
+    .mobile-sidebar-button,
+    .mobile-sidebar-close {
+        display: none;
+    }
+}
+    
+/* Imagens responsivas */
+/* Aliado ao uso de .main-content img já implementado */
+img {
+    max-width: 100%;
+    height: auto;
+}
