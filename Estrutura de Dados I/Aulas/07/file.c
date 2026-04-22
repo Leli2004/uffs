@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #define TAM_NOME 50
-#define TAM_LISTA 2
+#define TAM_LISTA 3
 
 // gcc -Wall file.c -o file
 
