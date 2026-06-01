@@ -113,6 +113,7 @@ int main() {
     }
 
     listQueue(queue);
+    freeAll(queue);
 
     return 0;
 }
