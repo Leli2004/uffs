@@ -26,7 +26,7 @@ Tree* insert(Tree *root, int value) {
     if (root == NULL)
         return createNode(value);
 
-    // Insere à esquerda se valores forem maiores ou iguais
+    // Insere à esquerda se valores forem menores ou iguais
     if (value <= root->value)
         root->left = insert(root->left, value);
 
