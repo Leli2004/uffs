@@ -8,7 +8,8 @@
 8: Listas Duplas
 9: Filas
 10: Pilhas
-11: Árvores binárias
+11: Árvores binárias de Busca (BST)
+12: BST com AVL
 
 Gerar build: 
     "gcc -Wall file.c -o file" OU "gcc -Wall file.c interfaces.c -lm -o file"
