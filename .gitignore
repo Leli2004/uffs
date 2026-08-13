@@ -1,28 +1,34 @@
 # Executáveis Linux/Unix
-*.out
-*.exe
-*.bin
-*.run
+**/*.out
+**/*.exe
+**/*.bin
+**/*.run
 
 # Arquivos objeto (compilação C/C++)
-*.o
-*.obj
+**/*.o
+**/*.obj
+
+# Executáveis Java / arquivos compilados
+**/*.class
+**/*.jar
+**/*.war
 
 # Bibliotecas compiladas
-*.a
-*.so
-*.dll
-*.dylib
+**/*.a
+**/*.so
+**/*.dll
+**/*.dylib
 
 # Arquivos temporários
-*.log
-*.tmp
-*.swp
+**/*.log
+**/*.tmp
+**/*.swp
 
 # Diretórios comuns de build
-build/
-bin/
-dist/
+**/build/
+**/bin/
+**/dist/
+**/target/
 
 # Arquivos gerados automaticamente
-*.class
+**/*.class
