@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// gcc -Wall 02_blubble_sort.c -o 02_blubble_sort
+// gcc -Wall 02_1_blubble_sort.c -o 02_1_blubble_sort
 
 void swap(int * v, int i, int n){
     int aux = v[i];

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// gcc -Wall 02_selection_sort.c -o 02_selection_sort
+// gcc -Wall 02_2_selection_sort.c -o 02_2_selection_sort
 
 void swap(int * v, int i, int n){
     int aux = v[i];
@@ -9,7 +9,6 @@ void swap(int * v, int i, int n){
     v[i] = v[n];
     v[n] = aux;
 }
-
 
 void orderSelectionSort(int *v, int size) {
     if(v == NULL) return;
