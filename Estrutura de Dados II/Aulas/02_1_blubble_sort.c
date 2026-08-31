@@ -10,7 +10,7 @@ void swap(int * v, int i, int n){
     v[n] = aux;
 }
 
-void orderBubbleSort(int *v, int size) {
+void bubbleSort(int *v, int size) {
     if(v == NULL) return;
 
     for(int i=size-1; i>0; i--) { // i = posição limite (após já está ordenado)
@@ -31,7 +31,7 @@ int main ( void ) {
     while(size)
         scanf("%d", &v[--size]);
     
-    orderBubbleSort(v, n);
+    bubbleSort(v, n);
     
     for (int i = 0; i < n; i++)
         printf("%d ", v[i]);
