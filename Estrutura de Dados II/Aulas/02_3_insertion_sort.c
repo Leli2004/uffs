@@ -10,12 +10,12 @@ void swap(int * v, int i, int n){
     v[n] = aux;
 }
 
-void orderInsertionSort(int *v, int size) {
+void insertionSort(int *v, int size) {
     if(v == NULL) return;
 
     for(int i=1; i<size; i++) { // i = posição limite (antes já está ordenado)
         int aux = v[i];
-        int j = i-1;
+        int j = i-1; // parcela já ordenada da lista
 
         while(j >= 0 && v[j] > aux) {
             v[j + 1] = v[j];
@@ -38,7 +38,7 @@ int main ( void ) {
     while(size)
         scanf("%d", &v[--size]);
     
-    orderInsertionSort(v, n);
+    insertionSort(v, n);
     
     for (int i = 0; i < n; i++)
         printf("%d ", v[i]);

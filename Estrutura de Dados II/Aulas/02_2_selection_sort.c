@@ -10,7 +10,7 @@ void swap(int * v, int i, int n){
     v[n] = aux;
 }
 
-void orderSelectionSort(int *v, int size) {
+void selectionSort(int *v, int size) {
     if(v == NULL) return;
     int menor;
 
@@ -36,7 +36,7 @@ int main ( void ) {
     while(size)
         scanf("%d", &v[--size]);
     
-    orderSelectionSort(v, n);
+    selectionSort(v, n);
     
     for (int i = 0; i < n; i++)
         printf("%d ", v[i]);
