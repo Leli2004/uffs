@@ -42,7 +42,7 @@ void merge(int *v, int low, int medium, int high) {
         k++;
     }
     
-    // devolver para o vetor original
+    // devolver para o vetor original v
     for(int k=0; k<size; k++) {
         v[low+k] = aux[k];
     }
@@ -63,6 +63,12 @@ void mergeSort(int *v, int low, int high){
     merge(v, low, medium, high);
 }
 
+void printArray(int *v, int size) {
+    for(int i=0; i<size; i++)
+        printf("%d ", v[i]);
+    printf("\n");
+}
+
 int main ( void ) {
     int size, n;
     
@@ -76,8 +82,7 @@ int main ( void ) {
     
     mergeSort(v, 0, n-1);
     
-    for (int i = 0; i < n; i++)
-        printf("%d ", v[i]);
+    printArray(v, n);
 
     return 0;
 }
