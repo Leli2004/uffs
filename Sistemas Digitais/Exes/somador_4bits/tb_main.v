@@ -1,5 +1,5 @@
-// iverilog -o tb_main_sim main.v tb_main.v
-// vvp tb_main_sim
+// iverilog -o tb_main_sim.out main.v tb_main.v
+// vvp tb_main_sim.out
 
 module tb_main;
 

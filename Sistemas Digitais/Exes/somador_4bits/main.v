@@ -1,13 +1,3 @@
-/*
-TAREFA 1: implementar somador de 4 bits
-
-input [7:0] SW;
-output [3:0] LEDR;
-
-SW[3:0] => primeiro número
-SW[7:4] => segundo número
-LEDR[4:0] => resultado
-*/
 
 module main(
 	input [7:0] SW,
