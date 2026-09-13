@@ -27,10 +27,17 @@ module tb_reg_file;
 
   // Geração do ciclo de clock
   initial clk = 0; 
-  always #5 clk = ~clk;  
+  always #5 clk = ~clk; // ocorre a cada 5 ns
 
   // Modelo de referencia para os testes (registradores)
   reg [15:0] modelo [0:7];
+
+  // Variáveis para cenário 10 com random
+  integer k;
+  integer valor_aleatorio;
+  reg [2:0] addr_rand;
+  reg [15:0] data_rand;
+  reg [15:0] ultimo_valor;
 
   // Implementa lógica com base na lógica do DUT para gerar os valores esperados 
   always @(posedge clk) begin
@@ -83,7 +90,7 @@ module tb_reg_file;
         #10; // aguarda a propagacao da logica combinacional
 
         @(posedge clk); 
-        #3; // aguarda a propagacao da logica sequencial
+        #1; // aguarda a propagacao da logica sequencial
 
         // Modelo de referencia (calculado de forma independente do DUT)
         r_data_a_esperado = modelo[t_r_addr_a];
@@ -108,14 +115,62 @@ module tb_reg_file;
     
   endtask
 
+  // Usada para cobrir cenário de teste 8 -> pré clock
+  task aplicar_teste_pre_clk;
+    input t_rst_n;
+    input t_we;
+    input [2:0] t_w_addr;
+    input [2:0] t_r_addr_a; 
+    input [2:0] t_r_addr_b;
+    input [15:0] t_w_data;
+
+    begin
+
+        @(negedge clk); 
+        rst_n = t_rst_n;
+        we = t_we;
+        w_addr = t_w_addr;
+        w_data = t_w_data;
+        r_addr_a = t_r_addr_a;
+        r_addr_b = t_r_addr_b;
+        #1; // só o suficiente para a leitura combinacional se estabilizar, SEM cruzar a borda de subida
+
+        // Modelo de referencia
+        r_data_a_esperado = modelo[t_r_addr_a];
+        r_data_b_esperado = modelo[t_r_addr_b];
+
+        testes = testes + 1;
+
+        if ((r_data_a === r_data_a_esperado) && (r_data_b === r_data_b_esperado)) 
+            begin
+                $display("PASS [%0d] clk=%b rst_n=%b, we=%b, w_addr=%b, w_data=%h, r_addr_a=%b, r_addr_b=%b -> r_data_a=%h, r_data_b=%h, (esperado r_data_a=%h, r_data_b=%h)",
+                        testes, clk, rst_n, we, w_addr, w_data,
+                        r_addr_a, r_addr_b, r_data_a, r_data_b,
+                        r_data_a_esperado, r_data_b_esperado);
+            end else begin
+                erros = erros + 1;
+                $display("FAIL [%0d] clk=%b rst_n=%b, we=%b, w_addr=%b, w_data=%h, r_addr_a=%b, r_addr_b=%b -> r_data_a=%h, r_data_b=%h, (esperado r_data_a=%h, r_data_b=%h)  <<< ERRO DETECTADO",
+                        testes, clk, rst_n, we, w_addr, w_data,
+                        r_addr_a, r_addr_b, r_data_a, r_data_b,
+                        r_data_a_esperado, r_data_b_esperado); 
+            end
+
+            @(posedge clk); // deixa a borda passar DEPOIS de já ter comparado, para não acumular atraso na simulação
+            #1; // aguarda a propagacao da logica sequencial
+    end
+
+  endtask
+
+  // Aplicar os testes e reportar resultados
   initial begin
     $display("==================================================");
     $display(" Testbench: Registradores");
     $display("==================================================");
     
     // Cobertura dos casos de teste:
-
-    /// Reset síncrono => Todos os regs = 0x0000
+    
+    /***********************************************************/
+    /// 1) Reset síncrono => Todos os regs = 0x0000
     aplicar_teste(
         1'b0, // t_rst_n=0
         1'b0, // t_we=0
@@ -125,7 +180,8 @@ module tb_reg_file;
         16'h0 // t_w_data=0
     );
 
-    /// Escrita em R0 => R0 = 0xDEAD após clock
+    /***********************************************************/
+    /// 2) Escrita em R0 => R0 = 0xDEAD após clock
     aplicar_teste(
         1'b1, // t_rst_n=1
         1'b1, // t_we=1
@@ -135,7 +191,8 @@ module tb_reg_file;
         16'hDEAD // t_w_data=DEAD
     );
 
-    /// Escrita em R7 => R7 = 0xBEEF após clock
+    /***********************************************************/
+    /// 3) Escrita em R7 => R7 = 0xBEEF após clock
     aplicar_teste(
         1'b1, // t_rst_n=1
         1'b1, // t_we=1
@@ -145,7 +202,8 @@ module tb_reg_file;
         16'hBEEF // t_w_data=BEEF
     );
 
-    /// Leitura A=R0, B=R7 => r_data_a=0xDEAD, r_data_b=0xBEEF
+    /***********************************************************/
+    /// 4) Leitura A=R0, B=R7 => r_data_a=0xDEAD, r_data_b=0xBEEF
     aplicar_teste(
         1'b1, // t_rst_n=1
         1'b0, // t_we=0
@@ -155,7 +213,8 @@ module tb_reg_file;
         16'h0 // t_w_data=0
     );
 
-    /// Escrita em todos => Cada reg com valor distinto
+    /***********************************************************/
+    /// 5) Escrita em todos => Cada reg com valor distinto
     for (i=0; i<8; i=i+1) begin
         aplicar_teste(
             1'b1, // t_rst_n=1
@@ -167,7 +226,8 @@ module tb_reg_file;
         );
     end
 
-    /// Leitura simultânea A=Ri, B=Rj => Ambas portas corretas
+    /***********************************************************/
+    /// 6) Leitura simultânea A=Ri, B=Rj => Ambas portas corretas
     aplicar_teste(
         1'b1, // t_rst_n=1
         1'b0, // t_we=0
@@ -177,7 +237,8 @@ module tb_reg_file;
         16'h0 // t_w_data=0
     );
     
-    /// we=0: tentativa de escrita => R2 não muda
+    /***********************************************************/
+    /// 7) we=0: tentativa de escrita => R2 não muda
     aplicar_teste( // escreve novo valor conhecido em R2
         1'b1, // t_rst_n=1
         1'b1, // t_we=1
@@ -195,7 +256,8 @@ module tb_reg_file;
         16'h0 // t_w_data=0
     );
 
-    /// Reset durante operação => Todos zerados
+    /***********************************************************/
+    /// 9) Reset durante operação => Todos zerados
     for (i = 0; i < 8; i = i + 2) begin // compara em duplas com leitura A e B
         j = i + 1;
         aplicar_teste(
@@ -208,16 +270,59 @@ module tb_reg_file;
         );
     end
 
-    /****************************************/
-    // TODO: cenários 8 e 10 (novas tasks)
+    /***********************************************************/
+    /// 8) Leitura/escrita mesmo endereço Porta lê val_antigo (antes do clock)
+    aplicar_teste_pre_clk( // escreve novo valor conhecido em R3, lê R3 e R0 no mesmo passo, antes do clock, pra conferir que ainda lê o valor antigo de R3
+        1'b1, // t_rst_n=1
+        1'b1, // t_we=1
+        3'd3, // t_w_addr=011
+        3'd3, // t_r_addr_a=011
+        3'd0, // t_r_addr_b=000
+        16'h0001 // t_w_data=1
+    );
 
-    // /// Leitura/escrita mesmo endereço Porta lê val_antigo (antes do clock)
-    // aplicar_teste()
+    /***********************************************************/
+    /// 10) Endereços variáveis com $random => Verificar consistência escrita/leitura
+    for (k = 0; k < 10; k = k + 1) begin
+        valor_aleatorio = $random;
+        addr_rand = valor_aleatorio[2:0]; // 3 bits menos significativos para endereços de 0 a 7
+        data_rand = valor_aleatorio[15:0]; // 16 bits menos significativos
 
-    // /// Endereços variáveis com $random => Verificar consistência escrita/leitura
-    // aplicar_teste()
-    /****************************************/
-    
+        aplicar_teste (
+            1'b1, // t_rst_n=1
+            1'b1, // t_we=1
+            addr_rand, // t_w_addr = endereço aleatório
+            addr_rand, // t_r_addr_a = mesmo endereço para ler o que acabou de escrever
+            3'd0, // t_r_addr_b = 0
+            data_rand // t_w_data = valor aleatório
+        );
+    end
+
+    for (k = 0; k < 5; k = k + 1) begin
+        valor_aleatorio = $random;
+        ultimo_valor = valor_aleatorio[15:0]; // 16 bits menos significativos
+        
+        aplicar_teste (
+            1'b1, // t_rst_n=1
+            1'b1, // t_we=1
+            3'd4, // t_w_addr = endereço fixo escolhido para esse teste
+            3'd0, // t_r_addr_a=000
+            3'd0, // t_r_addr_b=000
+            ultimo_valor // t_w_data = valor aleatório
+        );
+    end
+
+    aplicar_teste (
+        1'b1, // t_rst_n=1
+        1'b0, // t_we=0
+        3'd0, // t_w_addr=000
+        3'd4, // t_r_addr_a = mesmo endereço fixo escolhido para esse teste
+        3'd0, // t_r_addr_b=000
+        16'h0 // t_w_data=0
+    );
+
+    /***********************************************************/
+
     $display("==================================================");
     
     if (erros == 0) begin
@@ -232,7 +337,7 @@ module tb_reg_file;
     
   end
   
-//   // gerar ondas para visualização/conferência
+//   // Opcional: gerar ondas para visualização/conferência
 //   initial begin 
 //     $dumpfile("tb_reg_file.vcd"); 
 //     $dumpvars(0, tb_reg_file);
