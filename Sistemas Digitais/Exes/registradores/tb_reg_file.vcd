@@ -1,0 +1,126 @@
+$date
+	Fri Sep 11 22:10:04 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module tb_reg_file $end
+$var wire 16 ! r_data_b [15:0] $end
+$var wire 16 " r_data_a [15:0] $end
+$var reg 1 # clk $end
+$var reg 3 $ r_addr_a [2:0] $end
+$var reg 3 % r_addr_b [2:0] $end
+$var reg 16 & r_data_a_esperado [15:0] $end
+$var reg 16 ' r_data_b_esperado [15:0] $end
+$var reg 1 ( rst_n $end
+$var reg 3 ) w_addr [2:0] $end
+$var reg 16 * w_data [15:0] $end
+$var reg 1 + we $end
+$var integer 32 , erros [31:0] $end
+$var integer 32 - testes [31:0] $end
+$scope module dut $end
+$var wire 1 # clk $end
+$var wire 3 . r_addr_a [2:0] $end
+$var wire 3 / r_addr_b [2:0] $end
+$var wire 16 0 r_data_a [15:0] $end
+$var wire 16 1 r_data_b [15:0] $end
+$var wire 1 ( rst_n $end
+$var wire 3 2 w_addr [2:0] $end
+$var wire 16 3 w_data [15:0] $end
+$var wire 1 + we $end
+$upscope $end
+$scope task aplicar_teste $end
+$var reg 3 4 t_r_addr_a [2:0] $end
+$var reg 3 5 t_r_addr_b [2:0] $end
+$var reg 1 6 t_rst_n $end
+$var reg 3 7 t_w_addr [2:0] $end
+$var reg 16 8 t_w_data [15:0] $end
+$var reg 1 9 t_we $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+09
+b0 8
+b0 7
+06
+b1 5
+b0 4
+bx 3
+bx 2
+bx 1
+bx 0
+bx /
+bx .
+b0 -
+b0 ,
+x+
+bx *
+bx )
+x(
+bx '
+bx &
+bx %
+bx $
+0#
+bx "
+bx !
+$end
+#5
+1#
+#10
+b1 %
+b1 /
+b0 $
+b0 .
+b0 *
+b0 3
+b0 )
+b0 2
+0+
+0(
+0#
+#15
+b0 !
+b0 1
+b0 "
+b0 0
+1#
+#20
+0#
+#25
+1#
+#28
+b1101111010101101 8
+b111 5
+19
+16
+b1 -
+b0 '
+b0 &
+#30
+b111 %
+b111 /
+b1101111010101101 *
+b1101111010101101 3
+1+
+1(
+0#
+#35
+b1101111010101101 "
+b1101111010101101 0
+1#
+#40
+0#
+#45
+1#
+#48
+b10 -
+b1101111010101101 &
