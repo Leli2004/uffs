@@ -4,6 +4,7 @@
 3. Associação, Agregação e Composição
 4. Herança
 5. Poliformismo: sobrecarga, sobrescrita, inclusão
+6. Tratamento de exceções
 
 -----
 Para buildar: javac File.java
