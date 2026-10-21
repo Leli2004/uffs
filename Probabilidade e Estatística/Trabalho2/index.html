@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Estimação: Média e Proporção</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Estimação pontual e intervalar</h1>
+    <p>Probabilidade e Estatística · Ciência da Computação · UFFS Chapecó</p>
+  </header>
+
+  <main>
+    <!-- MÉDIA -->
+    <section class="painel">
+      <h2>Média</h2>
+      <div class="campos">
+        <label>Média da amostra (x̄)
+          <input type="number" id="m-media" step="any">
+        </label>
+        <label>Desvio padrão da amostra (s)
+          <input type="number" id="m-desvio" step="any" min="0">
+        </label>
+        <label>Tamanho da amostra (n)
+          <input type="number" id="m-n" step="1" min="2">
+        </label>
+        <label>Tamanho da população (N) <span class="dica">opcional</span>
+          <input type="number" id="m-N" step="1" min="1">
+        </label>
+        <label>Grau de confiança
+          <select id="m-conf">
+            <option value="90">90% (z = 1,65)</option>
+            <option value="95" selected>95% (z = 1,96)</option>
+            <option value="99">99% (z = 2,58)</option>
+          </select>
+        </label>
+      </div>
+      <button class="calcular" id="btn-media">Calcular</button>
+      <div class="resultado" id="res-media" aria-live="polite"></div>
+    </section>
+
+    <!-- PROPORÇÃO -->
+    <section class="painel">
+      <h2>Proporção</h2>
+      <div class="campos">
+        <label>Itens com a característica na amostra (x)
+          <input type="number" id="p-x" step="1" min="0">
+        </label>
+        <label>Tamanho da amostra (n)
+          <input type="number" id="p-n" step="1" min="1">
+        </label>
+        <label>Tamanho da população (N) <span class="dica">opcional</span>
+          <input type="number" id="p-N" step="1" min="1">
+        </label>
+        <label>Grau de confiança
+          <select id="p-conf">
+            <option value="90">90% (z = 1,65)</option>
+            <option value="95" selected>95% (z = 1,96)</option>
+            <option value="99">99% (z = 2,58)</option>
+          </select>
+        </label>
+      </div>
+      <button class="calcular" id="btn-prop">Calcular</button>
+      <div class="resultado" id="res-prop" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer>
+    Se N ficar vazio, a população é tratada como muito grande. Se n for maior que 5% de N,
+    o fator de correção é aplicado automaticamente.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
