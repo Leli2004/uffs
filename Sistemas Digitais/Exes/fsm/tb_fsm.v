@@ -10,6 +10,8 @@ module tb_fsm;
   reg dir;
   reg rst;  
   wire [2:0] z;
+
+  reg [2:0] z_esperado;
   
   initial clk = 0; 
   always #5 clk = ~clk; 
@@ -24,27 +26,38 @@ module tb_fsm;
   task aplicar_teste;
     input t_dir;
     input t_rst;
+    input [2:0] t_z_esperado;
     
     begin
       @(negedge clk);
       rst = t_rst;
       dir = t_dir;
-      #10;
       
       @(posedge clk);
-      #5;
+      #1;
       
       testes = testes + 1;
-      
-      $monitor("TESTE: rst=%b, dir=%b", rst, dir);
+
+      if(z === t_z_esperado) begin
+        $display("PASSOU: rst=%b, dir=%b", rst, dir);
+      end else begin
+        erros = erros + 1;
+        $display("FALHOU: rst=%b, dir=%b", rst, dir);
+      end
     end
   endtask;
   
   initial begin
-    aplicar_teste(1'b0, 1'b0);
-    aplicar_teste(1'b0, 1'b1);
-    aplicar_teste(1'b1, 1'b0);
-    aplicar_teste(1'b1, 1'b1);
+    rst = 1'b1;
+    dir = 1'b0;
+
+    @(posedge clk);
+    #1;
+    
+    aplicar_teste(1'b0, 1'b1, 3'b000);
+    aplicar_teste(1'b0, 1'b1, 3'b000);
+    aplicar_teste(1'b1, 1'b0, 3'b110);
+    aplicar_teste(1'b1, 1'b0, 3'b101);
     
     $display("================================================");
     if (erros == 0) begin
