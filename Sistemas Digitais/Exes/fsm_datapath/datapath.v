@@ -33,7 +33,9 @@ module datapath (
     output wire [9:0]  vb,           // Saída B do banco
     output wire [9:0]  s,            // Resultado da ULA
     output wire        z,            // Flag zero
-    output wire        c             // Flag carry/borrow/overflow
+    output wire        c,            // Flag carry/borrow/overflow
+
+    output wire [19:0] resultado // apenas para testes
 );
 
     // ----------------------------------------------------------------
@@ -54,6 +56,9 @@ module datapath (
         .va      (va),
         .vb      (vb)
     );
+
+    // concatena regs[4]=A e regs[2]=Q para compor o resultado
+    assign resultado = {rf.regs[4], rf.regs[2]};
 
     // ----------------------------------------------------------------
     // ULA — entradas diretas do banco de registradores
