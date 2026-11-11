@@ -6,6 +6,7 @@
 3: Métodos de ordenação - Quick Sort
 4: Métodos de ordenação - Merge Sort
 5: Tabelas de dispersão - Hashing
+6: AVL
 
 Gerar build: 
     "gcc -Wall file.c -o file" OU "gcc -Wall file.c interfaces.c -lm -o file"
