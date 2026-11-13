@@ -46,6 +46,7 @@ module fsm (
     localparam [2:0] endereco_M = 3'b011; // M = R3
     localparam [2:0] endereco_A = 3'b100; // A = R4
     localparam [2:0] constante_um = 3'b101; // constante 1
+	localparam [2:0] endereco_soma = 3'b110; // r6 = 1000000000
 
     // estado atual e proximo estado da fsm 
     reg [3:0] state, next_state;
@@ -63,10 +64,10 @@ module fsm (
         case (state)
             s0:      next_state = inicio ? s1 : s0; // se inicio=1 vai pra s1 
             s1:      next_state = z ? s_final : s2; // se n=contador (subtracao deu zero) vai pra s_final, senao vai pra s2
-            s2:      next_state = va[0] ? s3 : s4; // se q[0]=1 soma em s3, se nao vai pra s4
+            s2:      next_state = z ? s4 : s3; // se q[0]=1 soma em s3, se nao vai pra s4   
             s3:      next_state = s4; // soma A = A + M e vai pra s4
             s4:      next_state = s5; // shift Q e vai pra s5
-            s5:      next_state = va[0] ? s6 : s7; // se A[0]=1 vai pra s6, senao vai pra s7 
+            s5:      next_state = z ? s7 : s6; // se A[0]=1 vai pra s6, senao vai pra s7 
             s6:      next_state = s7; // coloca 1 no bit mais significativo e vai pra s7
             s7:      next_state = s8; // desloca A e vai pra s8
             s8:      next_state = s1; // contador++ e volta pra s1                 
@@ -104,6 +105,8 @@ module fsm (
             s2: begin
                 estado = s2;
                 sel_ra = endereco_Q;
+                sel_rb = constante_um;
+                sel_op = 3'b100; // and 
             end
 
             // s3: A = A + M
@@ -130,15 +133,20 @@ module fsm (
             s5: begin
                 estado = s5;
                 sel_ra = endereco_A;
+                sel_rb = constante_um;
+                sel_op = 3'b100; // and 
             end
 
             // s6: Q = Q + 1000000000 ou seja, Q[9] = 1
             s6: begin
                 estado = s6;
                 sel_ra = endereco_Q;
+                sel_rb = endereco_soma;
                 sel_rw = endereco_Q;
-                mux_w_sel = 1'b1; // usa dado externo
-                ext_w = {1'b1, va[8:0]}; // coloca 1 no inicio e usa os 9 bits menos significativos de Q
+                sel_op = 3'b011; // soma
+                mux_w_sel = 1'b0;
+                //mux_w_sel = 1'b0; // usa dado externo
+                //ext_w = {1'b1, va[8:0]}; // coloca 1 no inicio e usa os 9 bits menos significativos de Q
                 escreve = 1'b1;
             end
             
@@ -166,10 +174,13 @@ module fsm (
             // s_final: acabou a multiplicação
             s_final: begin
                 estado = s_final;
+                        
+                sel_ra = endereco_Q;
+                sel_rb = constante_um;
+                sel_op = 3'b000; // multiplicacao
             end
 
         endcase
     end
 
 endmodule
-
