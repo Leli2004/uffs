@@ -58,7 +58,7 @@ module datapath (
     );
 
     // concatena regs[4]=A e regs[2]=Q para compor o resultado
-    assign resultado = {rf.regs[4], rf.regs[2]};
+    //assign resultado = {rf.regs[4], rf.regs[2]};
 
     // ----------------------------------------------------------------
     // ULA — entradas diretas do banco de registradores
@@ -76,5 +76,5 @@ module datapath (
     // MUX W — seleciona valor a escrever no banco
     // ----------------------------------------------------------------
     assign vw = mux_w_sel ? ext_w : s;
-
+	 
 endmodule

@@ -9,16 +9,19 @@ module multi(
    output wire [6:0] HEX1, 
    output wire [6:0] HEX2, 
    output wire [6:0] HEX3,
+	
+	output wire [9:0]LEDR,
+	output wire [7:0]LEDG,
 
    // saida para teste
    output wire [19:0] resultado 
 );
 
 // sinais internos de entrada
-wire clk = CLOCK_50; // clock
-wire transicao = ~KEY[0]; // 1 habilita transicao de estado da fsm
-wire rst = ~KEY[1]; // reset
-wire inicio = ~KEY[2]; // habilita a multiplicacao
+wire clk = KEY[0]; // clock
+wire transicao = SW[1]; // 1 habilita transicao de estado da fsm
+wire rst = SW[0]; // reset
+wire inicio = SW[2]; // habilita a multiplicacao
 wire [3:0] estado; // usado somente no tb
 
 // sinais de controle da fsm para o datapath
@@ -84,5 +87,8 @@ bin10_to_7seg b (
    .hex2(HEX2),
    .hex3(HEX3)
 );
+
+assign LEDG[7:4] = estado;
+assign LEDR = s;
 
 endmodule
